@@ -87,7 +87,6 @@ function App() {
     .then ( response => {
       const temp = response.data.current.temp;
       const weat = response.data.current.weather[0].description;
-      let cuaca = null;
       const now = moment(new Date()).format('HH');
       let quo = quotes[Math.floor(Math.random() * quotes.length)]
       setTitleQuotes({'text': quo.text, 'author': quo.author});
@@ -95,48 +94,71 @@ function App() {
       if (now < 12) {
         setGreeting('おはよう');
         setTitleGreet(pagi[Math.floor(Math.random() * pagi.length)]);
+        gantiBg(weat, 'pagi', temp);
       } else if (now < 18) {
         setGreeting('こんにちは');
         setTitleGreet(siang[Math.floor(Math.random() * siang.length)]);
+        gantiBg(weat, 'siang', temp);
       } else {
         setGreeting('こんばんは');
         setTitleGreet(sore[Math.floor(Math.random() * sore.length)]);
+        gantiBg(weat, 'malam', temp);
       }
-      switch(weat) {
-        case 'clear sky':
-          cuaca = 'Cerah';
-          setWeatherIcon(faSun);
-          setBackground(0);
-        case 'few clouds':
-          cuaca = 'sedikit berawan'
-          setWeatherIcon(faCloudSun);
-          setBackground(1);
-        case 'shower rain':
-          cuaca = 'Hujan lebat'
-          setWeatherIcon(faCloudShowersHeavy);
-          setBackground(2);
-        case 'rain':
-          cuaca = 'Hujan'
-          setWeatherIcon(faCloudSunRain);
-          setBackground(2);
-        case 'light rain':
-          cuaca = 'Hujan ringan'
-          setWeatherIcon(faCloudRain);
-          setBackground(2);
-        case 'thunderstrom':
-          cuaca = 'Hujan badai'
-          setWeatherIcon(faBolt);
-          setBackground(2);
-        case 'overcast clouds':
-          cuaca = 'Mendung berawan'
-          setWeatherIcon(faCloud);
-          setBackground(1);
-      }
-      setWeather({temp: temp, weather: cuaca});
     })
     .catch ( e => {
       alert(e.toString());
     });
+  }
+
+  function gantiBg(param, kondisi, temp) {
+    let cuaca = null;
+    switch(param) {
+      case 'clear sky' :
+        cuaca = 'Cerah';
+        setWeatherIcon(faSun);
+        if (kondisi === 'pagi') {
+          setBackground(0);
+        } else if (kondisi === 'siang') {
+          setBackground(1);
+        } else {
+          setBackground(3);
+        }
+      case 'few clouds':
+        cuaca = 'sedikit berawan'
+        setWeatherIcon(faCloudSun);
+        if (kondisi === 'pagi') {
+          setBackground(1);
+        } else if (kondisi === 'siang') {
+          setBackground(1);
+        } else {
+          setBackground(3);
+        }
+      case 'shower rain':
+        cuaca = 'Hujan lebat'
+        setWeatherIcon(faCloudShowersHeavy);
+        setBackground(2);
+      case 'rain':
+        cuaca = 'Hujan'
+        setWeatherIcon(faCloudSunRain);
+        setBackground(2);
+      case 'light rain':
+        cuaca = 'Hujan ringan'
+        setWeatherIcon(faCloudRain);
+        setBackground(2);
+      case 'thunderstrom':
+        cuaca = 'Hujan badai'
+        setWeatherIcon(faBolt);
+        setBackground(2);
+      case 'overcast clouds':
+        cuaca = 'Mendung berawan'
+        setWeatherIcon(faCloud);
+        if (kondisi === 'malam') {
+          setBackground(3);
+        } else {
+          setBackground(1);
+        }
+    }
+    setWeather({temp: temp, weather: cuaca});
   }
 
   useEffect( () => {
