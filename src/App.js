@@ -145,6 +145,10 @@ function App() {
         cuaca = 'Hujan ringan'
         setWeatherIcon(faCloudRain);
         setBackground(2);
+      case 'moderate rain':
+        cuaca = 'Hujan sedang'
+        setWeatherIcon(faCloudRain);
+        setBackground(2);
       case 'thunderstrom':
         cuaca = 'Hujan badai'
         setWeatherIcon(faBolt);
