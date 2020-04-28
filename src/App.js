@@ -186,7 +186,7 @@ function App() {
           <Moment interval={1000} format='DD MMMM YYYY' locale='id'/>
         </div>
         <div id="waktu">
-          <Moment interval={1000} format='hh:mm:ss'/>
+          <Moment interval={1000} format='HH:mm:ss'/>
         </div>
         <div id='hari'>
           <Moment interval={1000} format='dddd' locale='id'/>
