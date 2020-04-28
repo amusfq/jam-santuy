@@ -1,0 +1,7 @@
+.rain-body {
+  background-color: #0d1119;
+  overflow: hidden;
+}
+.drop {
+  background: -webkit-gradient(linear,0 0,0 100%,from(#0d343a),to(hsla(0,0%,100%,.5)));
+}
