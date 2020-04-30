@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import Moment from 'react-moment';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCloud, faSun, faCloudSunRain, faCloudRain, faCloudSun, faCloudShowersHeavy, faMoon, faBolt, faHeart} from '@fortawesome/free-solid-svg-icons'
+import { faCloud, faSun, faCloudSunRain, faCloudRain, faCloudSun, faCloudShowersHeavy, faMoon, faBolt, faHeart, faPlayCircle, faPauseCircle, faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons'
 
 import 'moment-timezone';
 import 'moment/locale/id';
@@ -185,6 +185,7 @@ function App() {
     setShuffledSong(shuffle(songs));
     player.current.load();
     player.current.play();
+    setIsPlay(true);
   }, [])
 
   useInterval(() => {
@@ -226,6 +227,26 @@ function App() {
     'songs/5.mp3',
   ]
 
+  function playPause() {
+      if (player.current.paused) {
+        player.current.play();
+        setIsPlay(true);
+      } else {
+        player.current.pause()
+        setIsPlay(false);
+      }
+  }
+
+  function prevSong() {
+    if (currSong === 0) {
+      setCurrSong(songs.length - 1);
+    } else {
+      setCurrSong(currSong - 1);
+    }
+    player.current.load();
+    player.current.play();
+  }
+
   return (
     <>
     <audio ref={player}>
@@ -257,6 +278,7 @@ function App() {
         </div>
       </div>
       <div id='title-indo'>{titleGreet} <FontAwesomeIcon icon={faHeart} style={{'color': '#d71149'}}/></div>
+      <div id='btn-player'><FontAwesomeIcon icon={faChevronLeft} size='2x' onClick={() => prevSong()}/><FontAwesomeIcon style={{'margin': '0px 10px'}} onClick={() => playPause()} icon={isPlay?faPauseCircle:faPlayCircle} size='2x'/><FontAwesomeIcon onClick={() => nextSong()} icon={faChevronRight} size='2x'/></div>
     </div>
     <div id='quote'>
       <div id='quote-text'>{titleQuotes.text}</div>
