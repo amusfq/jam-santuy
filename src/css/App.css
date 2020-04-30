@@ -98,3 +98,12 @@
     text-align: center;
     margin-top: 10px;
 }
+
+#btn-player > svg {
+    color: #ffffff5e;
+}
+
+#btn-player > svg:hover {
+    cursor: pointer;
+    color: #ffffff;
+}
