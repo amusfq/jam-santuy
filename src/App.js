@@ -11,7 +11,6 @@ import Clouds from './Backgrounds/Clouds';
 import Wave from './Backgrounds/Wave';
 import Rain from './Backgrounds/Rain';
 import Stars from './Backgrounds/Stars';
-
 import './css/App.css';
 import moment from 'moment-timezone';
 
@@ -24,10 +23,16 @@ function App() {
     temp: null,
     weather: null,
   })
+  const [bgIcon, setBgIcon] = useState(faSun);
   const [weatherIcon, setWeatherIcon] = useState(faSun);
   const [greeting, setGreeting] = useState('おはよう');
   const [titleGreet, setTitleGreet] = useState(null);
   const [titleQuotes, setTitleQuotes] = useState({'text': null, 'author': null});
+  const [shuffledSong, setShuffledSong] = useState([]);
+  const [currSong, setCurrSong] = useState(0);
+  const [isPlay, setIsPlay] = useState(false);
+  const player = useRef(null);
+
   const pagi = [
     'Selamat pagi',
     'Semangat pagi',
@@ -62,6 +67,15 @@ function App() {
     {'text': 'HOLY SHIT!', 'author': 'Joseph Joestar'},
     {'text': 'SON OF A BITCH!', 'author': 'Joseph Joestar'},
     {'text': 'YOU\'RE ALREADY DEAD', 'author': 'Guts'},
+    {'text': 'Me and you, can we be friends?', 'author': 'Shouko Nishimiya (Silent Voice)'},
+    {'text': 'Aku mempertaruhkan hatiku untuk mengatakan sesuatu yang bisa berpengaruh', 'author': 'Akihito Kanbara (Kyoukai no Kanta)'},
+    {'text': 'Jika hanya itu hubungan yang kami miliki, mungkin akan menjadi mustahil untuk mengakhiri cerita yang ada di dalam dunia kita ini.', 'author': 'Akihito Kanbara (Kyoukai no Kanta)'},
+    {'text': 'Kau tidak akan menemukan alasan yang bagus dengan mengelap kacamata.', 'author': 'Akihito Kanbara (Kyoukai no Kanta)'},
+    {'text': 'Aku tidak suka merepotkan.', 'author': 'Kuriyama Mirai (Kyoukai no Kanta)'},
+    {'text': 'Aku bukan tipe orang yang suka bersosialisasi', 'author': 'Kuriyama Mirai (Kyoukai no Kanta)'},
+    {'text': 'Seorang gadis tanpa kacamata itu seperti shortcake tanpa strawberry di atasnya!', 'author': 'Akihito Kanbara (Kyoukai no Kanta)'},
+
+    // {'text': '', 'author': '()'},
   ]
 
 
@@ -103,6 +117,7 @@ function App() {
         setGreeting('こんばんは');
         setTitleGreet(sore[Math.floor(Math.random() * sore.length)]);
         gantiBg(weat, 'malam', temp);
+        setBgIcon(faMoon);
       }
     })
     .catch ( e => {
@@ -167,19 +182,64 @@ function App() {
 
   useEffect( () => {
     getWeather();
+    setShuffledSong(shuffle(songs));
+    player.current.load();
+    player.current.play();
   }, [])
 
   useInterval(() => {
     getWeather();
   }, 1000 * 60);
 
+  window.onload = () => {
+    player.current.onended = () => {
+      nextSong()
+    }
+  }
+
+  function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  }
+  function nextSong() {
+    if (currSong != songs.length - 1) {
+      setCurrSong(currSong + 1);
+    } else {
+      setCurrSong(0);
+    }
+    player.current.load();
+    player.current.play();
+  }
+
+  const songs = [
+    'songs/1.mp3',
+    'songs/2.mp3',
+    'songs/3.mp3',
+    'songs/4.mp3',
+    'songs/5.mp3',
+  ]
+
   return (
     <>
+    <audio ref={player}>
+      <source src={shuffledSong[currSong]}/>
+    </audio>
+    <div id='bg-icon'>
+      <FontAwesomeIcon icon={bgIcon} size='10x'/>
+    </div>
     <div id='title-japan'>{greeting}</div>
     <div id='weather'>
       <div id='weather-icon'>
         <FontAwesomeIcon icon={weatherIcon} size='5x'/>
       </div>
+      <div id='weather-location'>Surabaya</div>
       <div id='weather-info'>
         {weather.weather + ', ' + weather.temp + '\u00b0C'}
       </div>
