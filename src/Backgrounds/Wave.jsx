@@ -1,10 +1,10 @@
 import React from 'react';
 import '../css/Wave.css';
 
-function Wave() {
+function Wave({time='bright'}) {
     return (
         <>
-            <div className="waveWrapper waveAnimation bright">
+            <div className={"waveWrapper waveAnimation " + (time)}>
                 <div className="waveWrapperInner bgTop">
                     <div className="wave waveTop" style={{"backgroundImage": "url('http://front-end-noobs.com/jecko/img/wave-top.png')"}}></div>
                 </div>

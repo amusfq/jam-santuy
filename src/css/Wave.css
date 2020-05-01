@@ -34,6 +34,9 @@
 .sunset {
     background: linear-gradient(0deg, #340c23 15%, #fb4235 40%, #fb4235 55%, #c35d3b 100%);
 }
+.cloud {
+    background: linear-gradient(0deg, #b4c1c6 15%, #475967 40%, #475967 55%, #0d1114 100%);
+}
 .bgTop {
     z-index: 15;
     opacity: 0.5;

@@ -32,6 +32,7 @@ function App() {
   const [shuffledSong, setShuffledSong] = useState([]);
   const [currSong, setCurrSong] = useState(0);
   const [isPlay, setIsPlay] = useState(false);
+  const [mendung, setMendung] = useState(false);
   const player = useRef(null);
 
   const pagi = [
@@ -83,15 +84,15 @@ function App() {
   function renderSwitch(param) {
     switch (param) {
       case 0:
-        return <Clouds/>
+        return <Wave time={mendung?'cloud':'sunset'}/>
       case 1:
-        return <Wave/>
+        return <Wave time={mendung?'cloud':'bright'}/>
       case 2:
         return <Rain/>
       case 3:
         return <Stars/>
       default:
-        return <Clouds/>
+        return <Wave time='bright'/>
     }
   }
   function getWeather(long=112.768845, lat=-7.250445) {
@@ -172,6 +173,7 @@ function App() {
       case 'overcast clouds':
         cuaca = 'Mendung berawan'
         setWeatherIcon(faCloud);
+        setMendung(true);
         if (kondisi === 'malam') {
           setBackground(3);
         } else {
