@@ -271,7 +271,6 @@ function App() {
     })
     .then(response => {
       setCurrentLocation(response.data.address.city);
-      alert(response.data.address.city);
     })
     .catch(e => {
       console.log(e);
