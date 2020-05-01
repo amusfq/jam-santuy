@@ -24,6 +24,7 @@ function App() {
     weather: null,
   })
   const [bgIcon, setBgIcon] = useState(faSun);
+  const [currentLocation, setCurrentLocation] = useState('Surabaya');
   const [weatherIcon, setWeatherIcon] = useState(faSun);
   const [greeting, setGreeting] = useState('おはよう');
   const [titleGreet, setTitleGreet] = useState(null);
@@ -93,10 +94,10 @@ function App() {
         return <Clouds/>
     }
   }
-  function getWeather() {
+  function getWeather(long=112.768845, lat=-7.250445) {
     axios({
       method: 'get',
-      url: 'https://api.openweathermap.org/data/2.5/onecall?lat=-7.250445&lon=112.768845&units=metric&appid=c2ca00558e33de38624a93e41701c43c',
+      url: 'https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+long+'&units=metric&appid=c2ca00558e33de38624a93e41701c43c',
     })
     .then ( response => {
       const temp = response.data.current.temp;
@@ -186,6 +187,7 @@ function App() {
     player.current.load();
     player.current.play();
     setIsPlay(true);
+    getLocation()
   }, [])
 
   useInterval(() => {
@@ -210,7 +212,7 @@ function App() {
     return array;
   }
   function nextSong() {
-    if (currSong != songs.length - 1) {
+    if (currSong !== songs.length - 1) {
       setCurrSong(currSong + 1);
     } else {
       setCurrSong(0);
@@ -247,6 +249,34 @@ function App() {
     player.current.play();
   }
 
+  function getLocation () {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  }
+
+  function showPosition(position) {
+    const lat = position.coords.latitude;
+    const long = position.coords.longitude;
+    getWeather(long,lat);
+    changeLocation(long, lat);
+  }
+
+  function changeLocation(long=112.768845, lat=-7.250445) {
+    axios({
+      method: 'get',
+      url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat='+lat+'&lon=' + long,
+    })
+    .then(response => {
+      setCurrentLocation(response.data.address.city);
+    })
+    .catch(e => {
+      console.log(e);
+    });
+  }
+
   return (
     <>
     <audio ref={player}>
@@ -260,7 +290,7 @@ function App() {
       <div id='weather-icon'>
         <FontAwesomeIcon icon={weatherIcon} size='5x'/>
       </div>
-      <div id='weather-location'>Surabaya</div>
+    <div id='weather-location'>{currentLocation}</div>
       <div id='weather-info'>
         {weather.weather + ', ' + weather.temp + '\u00b0C'}
       </div>

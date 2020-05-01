@@ -4,7 +4,7 @@ import '../css/Wave.css';
 function Wave() {
     return (
         <>
-            <div className="waveWrapper waveAnimation">
+            <div className="waveWrapper waveAnimation bright">
                 <div className="waveWrapperInner bgTop">
                     <div className="wave waveTop" style={{"backgroundImage": "url('http://front-end-noobs.com/jecko/img/wave-top.png')"}}></div>
                 </div>

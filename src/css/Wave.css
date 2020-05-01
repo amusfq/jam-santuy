@@ -24,7 +24,15 @@
     overflow: hidden;
     height: 100%;
     bottom: -1px;
-    background: linear-gradient(0deg, rgba(81,75,128,1) 15%, rgba(173,126,134,1) 40%, rgba(171,135,146,1) 55%, rgba(161,192,223,1) 100%);
+}
+.sunrise {
+    background: linear-gradient(0deg, #f0963c 15%, #eccea8 40%, #eccea8 55%, #7c94a7 100%);
+}
+.bright {
+    background: linear-gradient(0deg, #a6bfda 15%, #228bcb 40%, #228bcb 55%, #034f87 100%);
+}
+.sunset {
+    background: linear-gradient(0deg, #340c23 15%, #fb4235 40%, #fb4235 55%, #c35d3b 100%);
 }
 .bgTop {
     z-index: 15;
