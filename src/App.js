@@ -24,7 +24,7 @@ function App() {
     weather: null,
   })
   const [bgIcon, setBgIcon] = useState(faSun);
-  const [currentLocation, setCurrentLocation] = useState('Surabaya');
+  const [currentLocation, setCurrentLocation] = useState(null);
   const [weatherIcon, setWeatherIcon] = useState(faSun);
   const [greeting, setGreeting] = useState('おはよう');
   const [titleGreet, setTitleGreet] = useState(null);
@@ -84,7 +84,7 @@ function App() {
   function renderSwitch(param) {
     switch (param) {
       case 0:
-        return <Wave time={mendung?'cloud':'sunset'}/>
+        return <Wave time={mendung?'cloud':'sunrise'}/>
       case 1:
         return <Wave time={mendung?'cloud':'bright'}/>
       case 2:
@@ -107,7 +107,11 @@ function App() {
       let quo = quotes[Math.floor(Math.random() * quotes.length)]
       setTitleQuotes({'text': quo.text, 'author': quo.author});
 
-      if (now < 12) {
+      if (now < 9) {
+        setGreeting('おはよう');
+        setTitleGreet(pagi[Math.floor(Math.random() * pagi.length)]);
+        gantiBg(weat, 'sunrise', temp);
+      } else if (now < 12) {
         setGreeting('おはよう');
         setTitleGreet(pagi[Math.floor(Math.random() * pagi.length)]);
         gantiBg(weat, 'pagi', temp);
@@ -133,9 +137,11 @@ function App() {
       case 'clear sky' :
         cuaca = 'Cerah';
         setWeatherIcon(faSun);
-        if (kondisi === 'pagi') {
+        if (kondisi === 'sunrise') {
           setBackground(0);
-        } else if (kondisi === 'siang') {
+        } else if (kondisi === 'pagi') {
+          setBackground(1);
+        }else if (kondisi === 'siang') {
           setBackground(1);
         } else {
           setBackground(3);
@@ -184,12 +190,11 @@ function App() {
   }
 
   useEffect( () => {
-    getWeather();
     setShuffledSong(shuffle(songs));
     player.current.load();
     player.current.play();
     setIsPlay(true);
-    getLocation()
+    getLocation();
   }, [])
 
   useInterval(() => {
@@ -253,17 +258,25 @@ function App() {
 
   function getLocation () {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
+     navigator.geolocation.getCurrentPosition(showPosition, errorLocation)
     } else {
       alert("Geolocation is not supported by this browser.");
     }
   }
 
   function showPosition(position) {
-    const lat = position.coords.latitude;
-    const long = position.coords.longitude;
-    getWeather(long,lat);
-    changeLocation(long, lat);
+    if (position !== null || position !== undefined) {
+      const lat = position.coords.latitude;
+      const long = position.coords.longitude;
+      getWeather(long,lat);
+      changeLocation(long, lat);
+    } else {
+      alert('izinkan')
+    }
+  }
+
+  function errorLocation() {
+    alert('Izinkan lokasi untuk mengambil data cuaca') 
   }
 
   function changeLocation(long=112.768845, lat=-7.250445) {
