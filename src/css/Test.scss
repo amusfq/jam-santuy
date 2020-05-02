@@ -8,6 +8,11 @@ body {
     color: #fff;
 }
 
+@font-face {
+    font-family: 'handage AOE BOLD';
+    src: url('../fonts/Handage-AOE-Bold.ttf.woff');
+}
+
 @mixin desktop {
     @media (min-width: 840px) {
         @content;
@@ -113,11 +118,12 @@ body {
     bottom: 0;
     text-align: center;
     margin-bottom: 20px;
+    font-family: 'handage AOE BOLD';
     .quote-text {
         display: block;
     }
     @include desktop {
-        font-size: 20px;
+        font-size: 30px;
         transform: translate(-50%, -50%);
         left: 50%;
         margin-bottom: 0px;

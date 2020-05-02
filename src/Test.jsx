@@ -11,8 +11,24 @@ import cerahBadai from './img/cerahBadai.svg';
 function Test () {
     const [clockText, setClockText] = useState('Enjoy your breath');
 
+    const [quote, setQuote] = useState({author: null, from: null, text: null});
+
+    const qu = 
+    {
+        author: 'KHALID',
+        from: null,
+        text: 'MAYBE YOU WEREN\'T THE ONE FOR ME BUT DEEP DOWN <br/>I WANTED YOU TO BE'
+    }
+    const me = 
+    {
+        author: 'ME',
+        from: null,
+        text: 'I\'M GLAD THAT YOU HAVE BECOME THE BEST A PART OF MY LIFE'
+    }
+
     useEffect( () => {
         document.title = 'TESTING PAGE'
+        setQuote(qu);
     }, [])
 
     useEffect( () => {
@@ -29,6 +45,11 @@ function Test () {
             }, 5000);
         }, 5000);
     }, []);
+
+    function heartClick() {
+        setClockText('Tada');
+        setQuote(me);
+    }
 
     return (
     <>
@@ -57,7 +78,7 @@ function Test () {
                 <div className="clock-icon">
                     {/* <FontAwesomeIcon icon={faHeart} style={{color: '#e74c3c'}}/> */}
                     
-                    <input id="toggle-heart" type="checkbox" onClick={() => setClockText('Tada')}/>
+                    <input id="toggle-heart" type="checkbox" onClick={() => heartClick()}/>
                     <label for="toggle-heart" aria-label="like">❤</label>
                 </div>
                 <div className="clock-text">
@@ -66,9 +87,9 @@ function Test () {
             </div>
         </div>
         <div className="quote">
-            <div className="quote-text" dangerouslySetInnerHTML={{__html: "MAYBE YOU WEREN'T THE ONE FOR ME BUT DEEP DOWN <br> I WANTED YOU TO BE"}}/>
+            <div className="quote-text" dangerouslySetInnerHTML={{__html: quote.text}}/>
             <div className="quote-author">
-                (KHALID)
+                ({quote.author}{quote.from !== null ? '-' : null}{quote.from})
             </div>
         </div>
     </>

@@ -8,6 +8,11 @@ body {
   color: #fff;
 }
 
+@font-face {
+  font-family: 'handage AOE BOLD';
+  src: url("../fonts/Handage-AOE-Bold.ttf.woff");
+}
+
 .weather {
   position: absolute;
   top: 20%;
@@ -135,6 +140,7 @@ body {
   bottom: 0;
   text-align: center;
   margin-bottom: 20px;
+  font-family: 'handage AOE BOLD';
 }
 
 .quote .quote-text {
@@ -143,7 +149,7 @@ body {
 
 @media (min-width: 840px) {
   .quote {
-    font-size: 20px;
+    font-size: 30px;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
     left: 50%;
