@@ -84,12 +84,6 @@
     font-size: 25px;
 }
 
-#quote-text:before {
-    display: block;
-    content: ' ';
-    background-image: url('../img/lquote.svg');
-}
-
 #quote-author {
     margin-top: 10px;
 }

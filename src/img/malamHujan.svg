@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="512px" height="512px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 512 512"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil2 {fill:#79B8E4}
+    .fil1 {fill:#8BA9C1}
+    .fil0 {fill:#9BBBD5}
+    .fil4 {fill:#AAACAD}
+    .fil3 {fill:#BDBFC1}
+    .fil5 {fill:#E7E6E9}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_292541240">
+   <g>
+    <circle class="fil0" cx="256" cy="199" r="199"/>
+    <circle class="fil1" cx="201" cy="95" r="25"/>
+    <circle class="fil1" cx="132" cy="128" r="14"/>
+    <circle class="fil1" cx="190" cy="170" r="14"/>
+   </g>
+   <g>
+    <g>
+     <rect class="fil2" transform="matrix(-0.235733 -0.11794 -0.11794 0.235733 188.224 429.413)" width="113" height="372" rx="56" ry="56"/>
+     <rect class="fil2" transform="matrix(-0.235733 -0.11794 -0.11794 0.235733 291.19 429.413)" width="113" height="372" rx="56" ry="56"/>
+     <rect class="fil2" transform="matrix(-0.235733 -0.11794 -0.11794 0.235733 394.155 429.413)" width="113" height="372" rx="56" ry="56"/>
+    </g>
+    <path class="fil3" d="M324 133c60,0 110,49 110,110 0,3 -1,6 -1,10 37,3 66,34 66,72 0,40 -33,72 -73,72l0 0 -264 0 0 0c-45,0 -81,-36 -81,-81 0,-34 21,-63 51,-75 5,-30 31,-53 62,-53 11,0 22,3 31,8 17,-37 55,-63 99,-63z"/>
+    <path class="fil4" d="M232 243l89 101 2 2 2 2 1 2 2 3 1 2 2 3 1 3 1 2 1 3 1 3 0 3 1 1 21 24 -111 0 3 0 2 0 3 0 2 -1 2 0 3 -1 2 -1 2 -1 2 -1 3 -1 2 -1 2 -1 1 -2 2 -1 2 -2 2 -1 1 -2 2 -2 1 -2 2 -1 1 -2 1 -2 1 -3 1 -2 1 -2 1 -2 1 -3 0 -2 1 -2 0 -3 0 -2 0 -3 0 -2 0 0 -44 -46 0 -1 0 0 0 -1 0 0 0 -1 0 0 0 0 0 -1 0 0 0 -1 0 0 0 0 0 -1 0 0 0 -1 0 0 0 -4 0 -4 -1 -3 0 -4 -1 -4 -1 -3 -1 -4 -2 -3 -1 -3 -2 -3 -2 -4 -2 -3 -2 -2 -2 -3 -2 -3zm-70 154l0 0 0 0 0 0z"/>
+    <path class="fil5" d="M177 219c41,0 74,33 74,74 0,2 0,4 0,7 25,2 44,23 44,48 0,27 -22,49 -49,49l0 0 -178 0 0 0c-30,0 -55,-24 -55,-55 0,-23 14,-42 35,-50 3,-21 20,-36 42,-36 7,0 14,2 20,5 12,-25 38,-42 67,-42z"/>
+   </g>
+  </g>
+ </g>
+</svg>

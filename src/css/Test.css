@@ -1,0 +1,146 @@
+body, html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+}
+
+.weather {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 80%;
+  margin: 0 auto;
+  display: -ms-grid;
+  display: grid;
+  margin-bottom: 20px;
+      grid-template-areas: "weather-temp weather-icon" "weather-desc weather-desc";
+}
+
+@media (min-width: 840px) {
+  .weather {
+    top: 10%;
+    left: 5%;
+    -webkit-transform: none;
+            transform: none;
+    width: auto;
+  }
+}
+
+.weather .weather-temp {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: weather-temp;
+  text-align: right;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+  padding-bottom: 10px;
+  font-size: 30px;
+}
+
+.weather .weather-icon {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: weather-icon;
+}
+
+.weather .weather-icon img {
+  width: 100px;
+  height: auto;
+}
+
+.weather .weather-desc {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: weather-desc;
+  text-align: center;
+  font-size: 20px;
+}
+
+.clock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: inline-block;
+  text-align: center;
+}
+
+@media (min-width: 840px) {
+  .clock {
+    top: 30%;
+    left: 35%;
+  }
+}
+
+.clock .clock-top {
+  text-align: left;
+  font-size: 20px;
+}
+
+.clock .clock-middle {
+  font-size: 60px;
+  text-align: center;
+}
+
+@media (min-width: 840px) {
+  .clock .clock-middle {
+    font-size: 100px;
+  }
+}
+
+@media (min-width: 840px) {
+  .clock .clock-bottom {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.clock .clock-bottom .clock-day {
+  font-size: 20px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.clock .clock-bottom .clock-icon {
+  font-size: 20px;
+  margin: 0px 10px;
+}
+
+.clock .clock-bottom .clock-text {
+  font-size: 16px;
+}
+
+.quote {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  left: 50%;
+  bottom: 0;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.quote .quote-text {
+  display: block;
+}
+
+@media (min-width: 840px) {
+  .quote {
+    font-size: 20px;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    left: 50%;
+    margin-bottom: 0px;
+  }
+}
+/*# sourceMappingURL=Test.css.map */
