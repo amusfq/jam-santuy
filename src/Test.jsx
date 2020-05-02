@@ -49,6 +49,7 @@ function Test () {
     function heartClick() {
         setClockText('Tada');
         setQuote(me);
+        document.title = "YES YOU"
     }
 
     return (
