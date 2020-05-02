@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import 'moment/locale/id';
@@ -9,6 +9,11 @@ import {faHeart} from '@fortawesome/free-solid-svg-icons'
 import cerahBadai from './img/cerahBadai.svg';
 
 function Test () {
+
+    useEffect( () => {
+        document.title = 'TESTING PAGE'
+    }, [])
+    
     return (
     <>
         <div className="weather">
