@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import 'moment/locale/id';
@@ -9,11 +9,27 @@ import {faHeart} from '@fortawesome/free-solid-svg-icons'
 import cerahBadai from './img/cerahBadai.svg';
 
 function Test () {
+    const [clockText, setClockText] = useState('Enjoy your breath');
 
     useEffect( () => {
         document.title = 'TESTING PAGE'
     }, [])
-    
+
+    useEffect( () => {
+        setTimeout(() => {
+            setClockText('Hey');
+
+            setTimeout(() => {
+                setClockText('I want tell u something');
+                
+                setTimeout(() => {
+                    setClockText('Try click the button');
+                    
+                }, 5000);
+            }, 5000);
+        }, 5000);
+    }, []);
+
     return (
     <>
         <div className="weather">
@@ -39,15 +55,18 @@ function Test () {
                     <Moment interval={1000} format='dddd' locale='id' />
                 </div>
                 <div className="clock-icon">
-                    <FontAwesomeIcon icon={faHeart} style={{color: '#e74c3c'}}/>
+                    {/* <FontAwesomeIcon icon={faHeart} style={{color: '#e74c3c'}}/> */}
+                    
+                    <input id="toggle-heart" type="checkbox" onClick={() => setClockText('Tada')}/>
+                    <label for="toggle-heart" aria-label="like">❤</label>
                 </div>
                 <div className="clock-text">
-                    enjoy your breath
+                    {clockText}
                 </div>
             </div>
         </div>
         <div className="quote">
-            <div className="quote-text" dangerouslySetInnerHTML={{__html: "MAYBE YOU WERENT THE ONE FOR ME BUT DEEP DOWN <br> I WANTED YOU TO BE"}}/>
+            <div className="quote-text" dangerouslySetInnerHTML={{__html: "MAYBE YOU WEREN'T THE ONE FOR ME BUT DEEP DOWN <br> I WANTED YOU TO BE"}}/>
             <div className="quote-author">
                 (KHALID)
             </div>
