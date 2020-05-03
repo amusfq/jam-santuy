@@ -6,6 +6,12 @@ body, html {
 body {
   background-color: #000;
   color: #fff;
+  -webkit-transition: background-color 5s;
+  transition: background-color 5s;
+}
+
+.change {
+  background-color: #3085d6;
 }
 
 @font-face {
@@ -125,7 +131,7 @@ body {
 }
 
 .clock .clock-bottom .clock-text {
-  font-size: 25px;
+  font-size: 35px;
   font-family: 'Dancing Script', cursive;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;

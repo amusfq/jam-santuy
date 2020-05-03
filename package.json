@@ -19,7 +19,8 @@
     "react-rain-animation": "^1.0.4",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "react-sound": "^1.2.0"
+    "react-sound": "^1.2.0",
+    "sweetalert2": "^9.10.12"
   },
   "scripts": {
     "start": "react-scripts start",
